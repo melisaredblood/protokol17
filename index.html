@@ -4,138 +4,132 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PROTOKOL 17</title>
-.card{
-    animation:cardIn .8s ease;
-    transition:.4s;
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 }
 
-@keyframes cardIn{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+body{
+background:#0d0d0d;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+padding:20px;
+}
+
+.card{
+width:100%;
+max-width:420px;
+background:#1a1a1a;
+border:1px solid #333;
+border-radius:18px;
+padding:35px;
+text-align:center;
+box-shadow:0 0 30px rgba(0,0,0,.5);
+animation:fade .8s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(35px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 .top{
-    color:#6b6b6b;
-    letter-spacing:3px;
-    font-size:12px;
-    margin-bottom:15px;
-}
-
-button{
-    transition:.25s;
-}
-
-button:hover{
-    transform:scale(1.06);
-    box-shadow:0 0 18px #3cff88;
-}
-
-#loading{
-    display:none;
-}
-
-.loader{
-    width:100%;
-    height:8px;
-    background:#333;
-    border-radius:20px;
-    overflow:hidden;
-    margin-top:25px;
-}
-
-.loader span{
-    display:block;
-    width:0%;
-    height:100%;
-    background:#3cff88;
-    animation:load 1s linear forwards;
-}
-
-@keyframes load{
-    to{
-        width:100%;
-    }
-}
-<style>
-body{
-    margin:0;
-    background:#0d0d0d;
-    color:white;
-    font-family:Arial,Helvetica,sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-}
-
-.card{
-    width:90%;
-    max-width:420px;
-    background:#1a1a1a;
-    border:1px solid #333;
-    border-radius:18px;
-    padding:35px;
-    text-align:center;
-    box-shadow:0 0 30px rgba(0,0,0,.5);
+font-size:12px;
+letter-spacing:3px;
+color:#777;
+margin-bottom:15px;
 }
 
 h1{
-    margin:0;
-    letter-spacing:4px;
-    font-size:32px;
+font-size:32px;
+letter-spacing:4px;
+margin-bottom:15px;
 }
 
 .line{
-    width:70px;
-    height:3px;
-    background:#3cff88;
-    margin:20px auto;
+width:70px;
+height:3px;
+background:#3cff88;
+margin:20px auto;
 }
 
 .info{
-    color:#bdbdbd;
-    margin:12px 0;
+color:#bdbdbd;
+margin:12px 0;
 }
 
 button{
-    margin-top:30px;
-    padding:15px 35px;
-    border:none;
-    border-radius:10px;
-    background:#3cff88;
-    color:#000;
-    font-weight:bold;
-    cursor:pointer;
-    font-size:16px;
+margin-top:30px;
+padding:15px 35px;
+background:#3cff88;
+color:#000;
+border:none;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.25s;
 }
 
 button:hover{
-    transform:scale(1.05);
+transform:scale(1.05);
+box-shadow:0 0 15px #3cff88;
 }
 
+#loading,
 #mission{
-    display:none;
+display:none;
+}
+
+.loader{
+width:100%;
+height:8px;
+background:#333;
+border-radius:20px;
+overflow:hidden;
+margin-top:25px;
+}
+
+.bar{
+width:0%;
+height:100%;
+background:#3cff88;
+transition:width 1s linear;
 }
 
 .mission-title{
-    color:#3cff88;
-    margin-bottom:20px;
+color:#3cff88;
+margin-bottom:15px;
+}
+
+.footer{
+margin-top:30px;
+font-size:11px;
+color:#666;
+letter-spacing:2px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <div class="card" id="home">
-<div class="top">
-GİZLİ OPERASYON
-</div>
+
+<div class="top">GİZLİ OPERASYON</div>
+
 <h1>PROTOKOL 17</h1>
 
 <div class="line"></div>
@@ -150,47 +144,72 @@ GİZLİ OPERASYON
 GÖREV DOSYASINI AÇ
 </button>
 
+<div class="footer">
+PROTOKOL 17 // Yetkisiz erişim yasaktır.
 </div>
 
-<div class="card" <div class="card" id="loading">
+</div>
 
-<h2 style="color:#3cff88;">
-DOSYA ŞİFRESİ ÇÖZÜLÜYOR...
-</h2>
+<div class="card" id="loading">
+
+<h2 style="color:#3cff88;">DOSYA ŞİFRESİ ÇÖZÜLÜYOR...</h2>
 
 <div class="loader">
-<span></span>
+<div class="bar" id="bar"></div>
 </div>
 
-<p class="info">
+<p class="info" style="margin-top:20px;">
 Yetki doğrulanıyor...
 </p>
 
-</div>id="mission">
+</div>
 
-<h2 class="mission-title">GÖREV 001</h2>
+<div class="card" id="mission">
 
-<p>
-AĞ VARDIR,<br><br>
-AMA BALIK TUTULMAZ.<br><br>
+<h2 class="mission-title">
+GÖREV 001
+</h2>
 
-SERVİS VARDIR,<br><br>
-AMA GARSON BULUNMAZ.<br><br>
-
-SMAÇ VARDIR,<br><br>
-AMA KAVGA EDİLMEZ.
+<p class="info">
+KONUM BİLGİSİ ŞİFRELENDİ
 </p>
 
-<h2 style="margin-top:30px;">NEREDEYİM?</h2>
+<br>
+
+<p style="line-height:32px;">
+
+AĞ VARDIR,<br>
+AMA BALIK TUTULMAZ.<br><br>
+
+SERVİS VARDIR,<br>
+AMA GARSON BULUNMAZ.<br><br>
+
+SMAÇ VARDIR,<br>
+AMA KAVGA EDİLMEZ.
+
+</p>
+
+<h2 style="margin-top:30px;color:#3cff88;">
+KONUM NEDİR?
+</h2>
+
+<div class="footer">
+İPUCU BULUNDUĞUNDA SONRAKİ QR KODU OKUT.
+</div>
 
 </div>
 
 <script>
+
 function startMission(){
 
     document.getElementById("home").style.display="none";
 
     document.getElementById("loading").style.display="block";
+
+    let bar=document.getElementById("bar");
+
+    bar.style.width="100%";
 
     setTimeout(function(){
 
@@ -201,6 +220,7 @@ function startMission(){
     },1000);
 
 }
+
 </script>
 
 </body>
