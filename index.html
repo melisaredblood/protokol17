@@ -1,250 +1,121 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PROTOKOL 17 // AUTHORIZED ACCESS</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>PROTOKOL 17</title>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-}
-
 body{
-
-background:#060606;
-
-overflow:hidden;
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-color:white;
-
-}
-
-#background{
-
-position:fixed;
-
-width:100%;
-
-height:100%;
-
-background:
-radial-gradient(circle at top,#141414,#050505);
-
-z-index:-2;
-
-}
-
-#noise{
-
-position:fixed;
-
-width:100%;
-height:100%;
-
-opacity:.03;
-
-background-image:url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-
-z-index:-1;
-
+    margin:0;
+    background:#0d0d0d;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
 
 .card{
-
-width:92%;
-
-max-width:430px;
-
-padding:35px;
-
-border-radius:24px;
-
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.08);
-
-box-shadow:
-0 20px 60px rgba(0,0,0,.6);
-
-animation:fade 1.4s ease;
-
+    width:90%;
+    max-width:420px;
+    background:#1a1a1a;
+    border:1px solid #333;
+    border-radius:18px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 0 30px rgba(0,0,0,.5);
 }
 
-.logo{
-
-text-align:center;
-
-font-size:13px;
-
-letter-spacing:6px;
-
-opacity:.6;
-
-margin-bottom:20px;
-
+h1{
+    margin:0;
+    letter-spacing:4px;
+    font-size:32px;
 }
 
-.logo h1{
-
-font-size:42px;
-
-letter-spacing:2px;
-
-margin-top:8px;
-
-font-weight:700;
-
+.line{
+    width:70px;
+    height:3px;
+    background:#3cff88;
+    margin:20px auto;
 }
 
-.loading{
-
-margin-top:35px;
-
-height:8px;
-
-background:#111;
-
-border-radius:20px;
-
-overflow:hidden;
-
+.info{
+    color:#bdbdbd;
+    margin:12px 0;
 }
 
-.bar{
-
-height:100%;
-
-width:0%;
-
-background:#35ff74;
-
-animation:load 3s forwards;
-
+button{
+    margin-top:30px;
+    padding:15px 35px;
+    border:none;
+    border-radius:10px;
+    background:#3cff88;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:16px;
 }
 
-.status{
-
-margin-top:22px;
-
-font-size:14px;
-
-line-height:30px;
-
-opacity:.9;
-
+button:hover{
+    transform:scale(1.05);
 }
 
-.hidden{
-
-display:none;
-
+#mission{
+    display:none;
 }
 
-@keyframes load{
-
-0%{width:0}
-
-100%{width:100%}
-
+.mission-title{
+    color:#3cff88;
+    margin-bottom:20px;
 }
-
-@keyframes fade{
-
-from{
-
-opacity:0;
-
-transform:translateY(25px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-<div id="background"></div>
-
-<div id="noise"></div>
-
-<div class="card" id="boot">
-
-<div class="logo">
-
-▲
+<div class="card" id="home">
 
 <h1>PROTOKOL 17</h1>
 
-</div>
+<div class="line"></div>
 
-<div style="text-align:center;opacity:.7;margin-top:15px">
+<p class="info">DOSYA NO: 001</p>
 
-GÜVENLİ ERİŞİM BAŞLATILIYOR
+<p class="info">KOD ADI: <b>BALKAN</b></p>
 
-</div>
+<p class="info">HEDEF: <b>BERRA ALKAN</b></p>
 
-<div class="loading">
-
-<div class="bar"></div>
+<button onclick="startMission()">DOSYAYI AÇ</button>
 
 </div>
 
-<div class="status" id="status">
+<div class="card" id="mission">
 
-<div>• BAĞLANTI KURULUYOR...</div>
+<h2 class="mission-title">GÖREV 001</h2>
 
-</div>
+<p>
+AĞ VARDIR,<br><br>
+AMA BALIK TUTULMAZ.<br><br>
+
+SERVİS VARDIR,<br><br>
+AMA GARSON BULUNMAZ.<br><br>
+
+SMAÇ VARDIR,<br><br>
+AMA KAVGA EDİLMEZ.
+</p>
+
+<h2 style="margin-top:30px;">NEREDEYİM?</h2>
 
 </div>
 
 <script>
-
-const status=document.getElementById("status");
-
-setTimeout(()=>{
-status.innerHTML+=`<div>✓ BAĞLANTI KURULDU</div>`;
-},900);
-
-setTimeout(()=>{
-status.innerHTML+=`<div>✓ KİMLİK DOĞRULANDI</div>`;
-},1700);
-
-setTimeout(()=>{
-status.innerHTML+=`<div>✓ DOSYA BULUNDU</div>`;
-},2500);
-
+function startMission(){
+document.getElementById("home").style.display="none";
+document.getElementById("mission").style.display="block";
+}
 </script>
 
 </body>
-
 </html>
