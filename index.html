@@ -4,7 +4,64 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PROTOKOL 17</title>
+.card{
+    animation:cardIn .8s ease;
+    transition:.4s;
+}
 
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.top{
+    color:#6b6b6b;
+    letter-spacing:3px;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+button{
+    transition:.25s;
+}
+
+button:hover{
+    transform:scale(1.06);
+    box-shadow:0 0 18px #3cff88;
+}
+
+#loading{
+    display:none;
+}
+
+.loader{
+    width:100%;
+    height:8px;
+    background:#333;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:25px;
+}
+
+.loader span{
+    display:block;
+    width:0%;
+    height:100%;
+    background:#3cff88;
+    animation:load 1s linear forwards;
+}
+
+@keyframes load{
+    to{
+        width:100%;
+    }
+}
 <style>
 body{
     margin:0;
@@ -76,7 +133,9 @@ button:hover{
 <body>
 
 <div class="card" id="home">
-
+<div class="top">
+GİZLİ OPERASYON
+</div>
 <h1>PROTOKOL 17</h1>
 
 <div class="line"></div>
@@ -87,11 +146,27 @@ button:hover{
 
 <p class="info">HEDEF: <b>BERRA ALKAN</b></p>
 
-<button onclick="startMission()">DOSYAYI AÇ</button>
+<button onclick="startMission()">
+GÖREV DOSYASINI AÇ
+</button>
 
 </div>
 
-<div class="card" id="mission">
+<div class="card" <div class="card" id="loading">
+
+<h2 style="color:#3cff88;">
+DOSYA ŞİFRESİ ÇÖZÜLÜYOR...
+</h2>
+
+<div class="loader">
+<span></span>
+</div>
+
+<p class="info">
+Yetki doğrulanıyor...
+</p>
+
+</div>id="mission">
 
 <h2 class="mission-title">GÖREV 001</h2>
 
@@ -112,8 +187,19 @@ AMA KAVGA EDİLMEZ.
 
 <script>
 function startMission(){
-document.getElementById("home").style.display="none";
-document.getElementById("mission").style.display="block";
+
+    document.getElementById("home").style.display="none";
+
+    document.getElementById("loading").style.display="block";
+
+    setTimeout(function(){
+
+        document.getElementById("loading").style.display="none";
+
+        document.getElementById("mission").style.display="block";
+
+    },1000);
+
 }
 </script>
 
